@@ -1,6 +1,4 @@
-"use client";
-
-import Markdown from "marked-react";
+import { ArticleContent } from "@/components/ArticleContent";
 
 const Home = async ({ params }) => {
   // index.json を読み込む
@@ -15,15 +13,12 @@ const Home = async ({ params }) => {
   const markdownUrl = `${BASE_URL}/articles/${item.id}.md`;
   const markdownResponse = await fetch(markdownUrl);
   const markdown = await markdownResponse.text();
-  console.log(markdown);
 
   return (
     <main>
       <h1>{item.title}</h1>
       <time>{item.date}</time>
-      <article>
-        <Markdown>{markdown}</Markdown>
-      </article>
+      <ArticleContent markdown={markdown} />
     </main>
   );
 };

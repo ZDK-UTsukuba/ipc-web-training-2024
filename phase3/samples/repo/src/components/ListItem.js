@@ -8,7 +8,7 @@ const ListItem = ({ id, title, date }) => {
           <b>{title}</b>
         </Link>
       </div>
-      <div>最終更新：{date}</div>
+      {date && <div>最終更新：{date}</div>}
     </li>
   );
 };
