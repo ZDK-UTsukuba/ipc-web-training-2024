@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { ArticleContent } from "@/components/ArticleContent";
 
-const Home = async ({ params }) => {
+const Page = async ({ params }) => {
   // index.json を読み込む
   const BASE_URL =
     "https://raw.githubusercontent.com/ZDK-UTsukuba/ipc-web-training-2024/master/phase3/samples/data";
@@ -16,11 +17,16 @@ const Home = async ({ params }) => {
 
   return (
     <main>
-      <h1>{item.title}</h1>
-      <time>{item.date}</time>
+      <header>
+        <h1>{item.title}</h1>
+        <time>{item.date}</time>
+      </header>
       <ArticleContent markdown={markdown} />
+      <footer>
+        <Link href="/">トップに戻る</Link>
+      </footer>
     </main>
   );
 };
 
-export default Home;
+export default Page;

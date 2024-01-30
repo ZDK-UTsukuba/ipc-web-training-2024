@@ -1,6 +1,6 @@
 import Form from "@/components/Form";
 
-const Home = async () => {
+const Page = async () => {
   const BASE_URL =
     "https://raw.githubusercontent.com/ZDK-UTsukuba/ipc-web-training-2024/master/phase3/samples/data";
   const url = `${BASE_URL}/index.json`;
@@ -17,4 +17,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Page;
