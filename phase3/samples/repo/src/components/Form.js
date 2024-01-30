@@ -1,30 +1,22 @@
-"use client";
-
-import { useState } from "react";
+import { redirect } from "next/navigation";
 import ListItem from "./ListItem";
 
-const Form = ({ items }) => {
-  const [keyword, setKeyword] = useState("");
-  const [filteredItems, setFilteredItems] = useState(items);
-
-  const search = (e) => {
-    e.preventDefault();
-    setFilteredItems(
-      keyword.length > 0
-        ? items.filter((item) => item.title.includes(keyword))
-        : items
-    );
+const Form = ({ items, keyword }) => {
+  const action = async (formData) => {
+    "use server";
+    const newKeyword = formData.get("keyword");
+    redirect(`/?keyword=${encodeURI(newKeyword)}`);
   };
+
+  const filteredItems =
+    keyword.length > 0
+      ? items.filter((item) => item.title.includes(keyword))
+      : items;
 
   return (
     <>
-      <form onSubmit={search}>
-        <input
-          type="text"
-          placeholder="キーワードを入力"
-          value={keyword}
-          onChange={(e) => setKeyword(e.currentTarget.value)}
-        />
+      <form action={action}>
+        <input type="text" placeholder="キーワードを入力" name="keyword" />
         <input type="submit" value="検索" />
       </form>
       {filteredItems.map((item, index) => (
