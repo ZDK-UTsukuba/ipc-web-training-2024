@@ -27,12 +27,12 @@ const Form = ({ items }) => {
         />
         <input type="submit" value="検索" />
       </form>
-      {filteredItems.map((item) => (
+      {filteredItems.map((item, index) => (
         <ListItem
           id={item.id}
           title={item.title}
           date={item.date}
-          key={item.id}
+          key={index}
         />
       ))}
     </>
